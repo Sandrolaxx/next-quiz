@@ -1,14 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import QuestionModel from '../../../model/question';
+import questions from "../questionsDatabase";
 
-type Data = {
-    id: string;
-    name: string;
-}
-
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<QuestionModel>) {
     res.status(200)
-        .json({
-            id: req.query.id?.toString()!,
-            name: 'Sandrolax'
-        });
+        .json(
+            questions[0]
+        );
 }
