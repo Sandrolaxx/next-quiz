@@ -10,7 +10,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Questi
     if (selectedQuestion.length === 1) {
         res.status(200)
             .json(
-                selectedQuestion[0]
+                selectedQuestion[0].shuffleAnswers()
             );
     } else {
         res.status(404).json("Pergunta não encontrada");

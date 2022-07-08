@@ -1,3 +1,4 @@
+import { shuffleList } from "../utils/util";
 import AnswerModel from "./answer";
 
 export default class QuestionModel {
@@ -36,6 +37,12 @@ export default class QuestionModel {
     public isAnswered() {
         return this.getAnswers()
             .reduce((prevVal, currVal) => currVal.isRevealed(), false);
+    }
+
+    shuffleAnswers() {
+        let shuffleAnswers = shuffleList(this.getAnswers());
+
+        return new QuestionModel(this.getId(), this.getStatement(), shuffleAnswers, this.isGotRight());
     }
 
 }
