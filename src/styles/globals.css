@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;600&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: linear-gradient(90deg, #ce80c0 0%, #8aa0cc 100%);
+  color: #fff;
 }
 
 a {
@@ -13,4 +15,5 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
 }

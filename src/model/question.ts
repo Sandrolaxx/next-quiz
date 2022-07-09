@@ -39,10 +39,32 @@ export default class QuestionModel {
             .reduce((prevVal, currVal) => currVal.isRevealed(), false);
     }
 
+    answerWith(index: number): QuestionModel {
+        const gotRight = this.getAnswers()[index]?.isCorrect();
+        const answers = this.getAnswers().map((answer, i) => {
+            const selectedAnswer = index === i;
+            const isReveal = selectedAnswer || answer.isCorrect();
+
+            return isReveal ? answer.reveal() : answer;
+        });
+
+        return new QuestionModel(this.getId(), this.getStatement(), answers, gotRight);
+    }
+
     shuffleAnswers() {
         let shuffleAnswers = shuffleList(this.getAnswers());
 
         return new QuestionModel(this.getId(), this.getStatement(), shuffleAnswers, this.isGotRight());
+    }
+
+    toObject() {
+        return {
+            id: this.getId(),
+            statement: this.getStatement(),
+            isAnswered: this.isAnswered(),
+            gotRight: this.isGotRight(),
+            answers: this.getAnswers()
+        }
     }
 
 }

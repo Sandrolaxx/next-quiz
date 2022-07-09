@@ -32,4 +32,8 @@ export default class AnswerModel {
         return this.revealed;
     }
 
+    reveal() {
+        return new AnswerModel(this.getValue(), this.isCorrect(), true);
+    }
+
 }
