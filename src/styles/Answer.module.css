@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    width: 80%;
+    height: 100px;
+    min-width: 520px;
+    margin: 10px;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+    position: relative;
+}
+
+.letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-right: 20px;
+    color: aliceblue;
+}
+
+.value {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.front, .back {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.front {
+    align-items: center;
+    background-color: aliceblue;
+    color: #212121;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.back > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+}
+
+.correct {
+    background-color: rgb(18, 192, 18);
+}
+
+.incorrect {
+    background-color: rgb(207, 22, 22);
+}
+
+.correct .value, .incorrect .value {
+    font-size: 1.8rem;
+}

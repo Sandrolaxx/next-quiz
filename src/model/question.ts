@@ -39,6 +39,10 @@ export default class QuestionModel {
             .reduce((prevVal, currVal) => currVal.isRevealed(), false);
     }
 
+    public isNotAnswered() {
+        return !this.isAnswered();
+    }
+
     answerWith(index: number): QuestionModel {
         const gotRight = this.getAnswers()[index]?.isCorrect();
         const answers = this.getAnswers().map((answer, i) => {

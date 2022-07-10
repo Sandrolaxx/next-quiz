@@ -1,4 +1,4 @@
-import { QuestionProps, StatementProps } from "../../utils/types";
+import { StatementProps } from "../../utils/types";
 import styles from "../../styles/Statement.module.css";
 
 export default function Statement({ text }: StatementProps) {
