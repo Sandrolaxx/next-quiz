@@ -30,3 +30,10 @@ export interface ButtonProps {
     href?: string;
     onClick?: (e: any) => void;
 }
+
+export interface SurveyProps {
+    question: QuestionModel;
+    isLast: boolean;
+    handleAnswered: (question: QuestionModel) => void;
+    handleNextStep: () => void;
+}

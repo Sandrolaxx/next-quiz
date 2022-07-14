@@ -2,6 +2,7 @@ import { useState } from 'react';
 import AnswerModel from '../model/answer'
 import QuestionModel from '../model/question'
 import Question from './components/Question'
+import Survey from './components/Survey';
 
 const questionMock = new QuestionModel(1, "Qual desses símbolos significa quilometro?", [
     AnswerModel.incorrect("KD"),
@@ -13,9 +14,8 @@ const questionMock = new QuestionModel(1, "Qual desses símbolos significa quilo
 export default function Home() {
     const [question, setQuestion] = useState(questionMock);
 
-    function handleResponse(index: number) {
-        setQuestion(question.answerWith(index));
-        console.log("Teste:" + index);
+    function handleResponse(question: QuestionModel) {
+        setQuestion(question);
     }
 
     function handleTimeOver() {
@@ -26,7 +26,7 @@ export default function Home() {
 
     return (
         <div style={{display: "flex", height: "100vh", justifyContent: "center", alignItems: "center"}}>
-            <Question value={question} reponseTime={5} handleResponse={handleResponse} handleTimeOver={handleTimeOver} />
+            <Survey question={question} isLast handleAnswered={() => handleResponse} handleNextStep={handleTimeOver}/>
         </div>
     )
 }
