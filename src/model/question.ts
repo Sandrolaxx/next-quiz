@@ -61,6 +61,15 @@ export default class QuestionModel {
         return new QuestionModel(this.getId(), this.getStatement(), shuffleAnswers, this.isGotRight());
     }
 
+    static fromJson(json: QuestionModel): QuestionModel {
+        return new QuestionModel(
+            json.id, 
+            json.statement,
+            json.answers.map(answer => AnswerModel.fromJson(answer)),
+            json.gotRight
+        )
+    }
+
     toObject() {
         return {
             id: this.getId(),

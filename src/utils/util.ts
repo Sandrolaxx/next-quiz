@@ -25,3 +25,12 @@ export const timerColors: MultipleColors = {
     colors: [`#${colors[3]}`, `#${colors[2]}`, `#${colors[1]}`, `#${colors[0]}`],
     colorsTime: [8, 6, 5, 0]
 }
+
+export function getInterValueFromQuery(queryValue: string | string[] | undefined): number {
+    if (queryValue == undefined
+        || queryValue instanceof Array) {
+        return 0;
+    }
+
+    return Number.parseInt(queryValue);
+}

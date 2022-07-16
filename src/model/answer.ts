@@ -1,3 +1,4 @@
+
 export default class AnswerModel {
     
     private value: string;
@@ -34,6 +35,10 @@ export default class AnswerModel {
 
     reveal() {
         return new AnswerModel(this.getValue(), this.isCorrect(), true);
+    }
+
+    static fromJson(json: AnswerModel): AnswerModel {
+        return new AnswerModel(json.value, json.correct, json.revealed);
     }
 
 }

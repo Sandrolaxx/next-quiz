@@ -21,6 +21,7 @@ export interface StatementProps {
 }
 
 export interface TimerProps {
+    key: number;
     time: number;
     handleTimeOver: () => void;
 }
@@ -36,4 +37,11 @@ export interface SurveyProps {
     isLast: boolean;
     handleAnswered: (question: QuestionModel) => void;
     handleNextStep: () => void;
+}
+
+export interface StatisticProps {
+    text: string;
+    value: string | number;
+    fontColor?: string;
+    backGroundColor?: string;
 }

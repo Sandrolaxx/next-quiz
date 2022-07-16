@@ -1,10 +1,10 @@
 import { StatementProps } from "../../utils/types";
-import styles from "../../styles/Statement.module.css";
+import style from "../../styles/Statement.module.css";
 
 export default function Statement({ text }: StatementProps) {
     return (
-        <div className={styles.container}>
-            <span className={styles.text}>
+        <div className={style.container}>
+            <span className={style.text}>
                 {text}
             </span>
         </div>

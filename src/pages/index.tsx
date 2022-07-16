@@ -1,25 +1,23 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import AnswerModel from '../model/answer'
-import QuestionModel from '../model/question'
-import Question from './components/Question'
+import QuestionModel from '../model/question';
 import Survey from './components/Survey';
-
-const questionMock = new QuestionModel(1, "Qual desses símbolos significa quilometro?", [
-    AnswerModel.incorrect("KD"),
-    AnswerModel.incorrect("KG"),
-    AnswerModel.incorrect("KK"),
-    AnswerModel.correct("KM")
-]);
 
 const BASE_URL = "http://localhost:3000/api";
 
 export default function Home() {
+    const router = useRouter();
     const [questionIds, setQuestionIds] = useState<number[]>();
-    const [question, setQuestion] = useState<QuestionModel>(questionMock);
+    const [question, setQuestion] = useState<QuestionModel>();
+    const [correctAnswers, setCorrectAnswers] = useState<number>(0);
 
     useEffect(() => {
         loadSurvey()
     }, []);
+
+    useEffect(() => {
+        questionIds && loadQuestion(questionIds[0])
+    }, [questionIds]);
 
     async function loadSurvey() {
         const response = await fetch(`${BASE_URL}/survey`);
@@ -29,24 +27,49 @@ export default function Home() {
     }
 
     async function loadQuestion(questionId: number) {
-        const response = await fetch(`${BASE_URL}/question/${questionId}`);
+        const response = await fetch(`${BASE_URL}/questions/${questionId}`);
         const question = await response.json();
+        const questionModel = QuestionModel.fromJson(question);
 
+        setQuestion(questionModel);
     }
 
-    function handleResponse(question: QuestionModel) {
-        setQuestion(question);
+    function idNextQuestion() {
+        if (questionIds && question) {
+            const nextIndex = questionIds.indexOf(question.getId()) + 1;
+            
+            return questionIds[nextIndex];
+        } 
     }
 
-    function handleTimeOver() {
-        if (question.isNotAnswered()) {
-            setQuestion(question.answerWith(-1));
+    function goToNextStep() {
+        const nextQuestionId = idNextQuestion();
+        
+        nextQuestionId ? loadQuestion(nextQuestionId) : handleFinish();
+    }
+
+    function handleFinish() {
+        router.push({
+            pathname: "/result",
+            query: {
+                total: questionIds?.length,
+                correct: correctAnswers
+            }
+        });
+    }
+
+    function handleResponse(selectedQuestion: QuestionModel) {
+        setQuestion(selectedQuestion);
+
+        if (selectedQuestion.isGotRight()) {
+            setCorrectAnswers(correctAnswers + (selectedQuestion.isGotRight() ? 1 : 0));
         }
     }
 
     return (
-        <Survey question={question} isLast
-            handleAnswered={() => handleResponse}
-            handleNextStep={handleTimeOver} />
+        question &&
+        <Survey question={question} isLast={idNextQuestion() === undefined}
+            handleAnswered={handleResponse}
+            handleNextStep={goToNextStep} />
     )
 }
