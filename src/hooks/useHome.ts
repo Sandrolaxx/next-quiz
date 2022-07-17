@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import QuestionModel from "../model/question";
 
-const BASE_URL = "http://localhost:3000/api";
+const BASE_URL = "https://show-do-milhao-sandrolaxx.vercel.app/api";
 
 export default function useHome() {
     const router = useRouter();
