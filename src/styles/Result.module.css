@@ -10,3 +10,20 @@
 .content {
     display: flex;
 }
+
+.text {
+    margin: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px)
+{
+    .container {
+        font-size: 1.4rem;
+    }
+
+}

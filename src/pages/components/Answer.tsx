@@ -2,9 +2,10 @@ import style from "../../styles/Answer.module.css";
 import { AnswerProps } from "../../utils/types";
 
 export default function Answer({ value, index, letter, letterBackgroundColor, handleResponse }: AnswerProps) {
-    const answerRevealed = value.isRevealed() ? style.answerRevealed : "";
+    const answerRevealed = value && value.isRevealed() ? style.answerRevealed : "";
 
     return (
+        value &&
         <div className={style.container} onClick={() => handleResponse(index)}>
             <div className={`${answerRevealed} ${style.content}`}>
                     <div className={style.front}>

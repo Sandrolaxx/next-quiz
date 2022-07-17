@@ -20,3 +20,26 @@
     font-size: 1.6rem;
     font-weight: 400;
 }
+
+@media (max-width: 768px)
+{
+    .value {
+        height: 140px;
+        width: 140px;
+        font-size: 2rem;
+    }
+
+}
+
+@media (max-width: 520px)
+{
+    .value {
+        height: 100px;
+        width: 100px;
+        font-size: 1.4rem;
+    }
+
+    .text {
+        font-size: 1.4rem;
+    }
+}

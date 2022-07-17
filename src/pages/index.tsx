@@ -1,75 +1,33 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import QuestionModel from '../model/question';
-import Survey from './components/Survey';
-
-const BASE_URL = "http://localhost:3000/api";
+import Image from "next/image";
+import { useEffect } from "react";
+import silvioImage from "../assets/blessSilvio.png";
+import useHome from "../hooks/useHome";
+import style from "../styles/Home.module.css";
+import Button from "./components/Button";
+import Survey from "./components/Survey";
 
 export default function Home() {
-    const router = useRouter();
-    const [questionIds, setQuestionIds] = useState<number[]>();
-    const [question, setQuestion] = useState<QuestionModel>();
-    const [correctAnswers, setCorrectAnswers] = useState<number>(0);
+    const home = useHome();
 
     useEffect(() => {
-        loadSurvey()
+        home.loadSurvey()
     }, []);
 
     useEffect(() => {
-        questionIds && loadQuestion(questionIds[0])
-    }, [questionIds]);
-
-    async function loadSurvey() {
-        const response = await fetch(`${BASE_URL}/survey`);
-        const questionIds = await response.json();
-
-        setQuestionIds(questionIds);
-    }
-
-    async function loadQuestion(questionId: number) {
-        const response = await fetch(`${BASE_URL}/questions/${questionId}`);
-        const question = await response.json();
-        const questionModel = QuestionModel.fromJson(question);
-
-        setQuestion(questionModel);
-    }
-
-    function idNextQuestion() {
-        if (questionIds && question) {
-            const nextIndex = questionIds.indexOf(question.getId()) + 1;
-            
-            return questionIds[nextIndex];
-        } 
-    }
-
-    function goToNextStep() {
-        const nextQuestionId = idNextQuestion();
-        
-        nextQuestionId ? loadQuestion(nextQuestionId) : handleFinish();
-    }
-
-    function handleFinish() {
-        router.push({
-            pathname: "/result",
-            query: {
-                total: questionIds?.length,
-                correct: correctAnswers
-            }
-        });
-    }
-
-    function handleResponse(selectedQuestion: QuestionModel) {
-        setQuestion(selectedQuestion);
-
-        if (selectedQuestion.isGotRight()) {
-            setCorrectAnswers(correctAnswers + (selectedQuestion.isGotRight() ? 1 : 0));
-        }
-    }
+        home.questionIds && home.loadQuestion(home.questionIds[0])
+    }, [home.questionIds]);
 
     return (
-        question &&
-        <Survey question={question} isLast={idNextQuestion() === undefined}
-            handleAnswered={handleResponse}
-            handleNextStep={goToNextStep} />
+        home.isStartScreen ?
+            <div className={style.container}>
+                <Image src={silvioImage} width={500} height={400} quality={100} alt="Bless Silvio" />
+                <span className={style.title}>Melhores Perguntas do Show do Milhão🌽</span>
+                <Button text="Começar" onClick={() => home.setStartScreen(false)} />
+            </div>
+            :
+            home.question &&
+            <Survey question={home.question} isLast={home.idNextQuestion() === undefined}
+                handleAnswered={home.handleResponse}
+                handleNextStep={home.goToNextStep} />
     )
 }

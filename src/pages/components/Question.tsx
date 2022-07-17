@@ -7,6 +7,7 @@ import Timer from "./Timer";
 
 export default function Question({ value, reponseTime, handleResponse, handleTimeOver }: QuestionProps) {
     return (
+        value &&
         <div className={style.container}>
             <Statement text={value.getStatement()} />
             <Timer key={value.getId()}

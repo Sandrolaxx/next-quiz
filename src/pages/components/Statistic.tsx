@@ -6,7 +6,7 @@ export default function Statistic({ text, value, fontColor, backGroundColor }: S
         <div className={style.container}>
             <div className={style.value}
                 style={{
-                    backgroundColor: backGroundColor ?? "#FDD60F",
+                    backgroundImage: backGroundColor ?? "linear-gradient(90deg, #f28907 30%, #fbf323 100%)",
                     color: fontColor ?? "#333"
                 }}>
                 {value}

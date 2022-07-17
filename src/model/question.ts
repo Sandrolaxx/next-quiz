@@ -76,7 +76,7 @@ export default class QuestionModel {
             statement: this.getStatement(),
             isAnswered: this.isAnswered(),
             gotRight: this.isGotRight(),
-            answers: this.getAnswers()
+            answers: shuffleList(this.getAnswers())
         }
     }
 

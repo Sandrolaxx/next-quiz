@@ -30,6 +30,7 @@
     font-weight: 600;
     margin-right: 20px;
     color: aliceblue;
+    margin: 12px;
 }
 
 .value {
@@ -78,4 +79,26 @@
 
 .correct .value, .incorrect .value {
     font-size: 1.8rem;
+}
+
+@media (max-width: 520px)
+{
+    .container {
+        width: 80%;
+        height: 60px;
+        min-width: 320px;
+        margin: 6px;
+    }
+
+    .letter {
+        font-size: 1.2rem;
+    }
+
+    .value {
+        font-size: 1.2rem;
+    }
+
+    .correct .value, .incorrect .value {
+        font-size: 1.2rem;
+    }
 }

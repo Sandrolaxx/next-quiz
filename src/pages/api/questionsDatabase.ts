@@ -26,7 +26,7 @@ const questionsDatabase: QuestionModel[] = [
         AnswerModel.incorrect("Galo"),
         AnswerModel.correct("Touro")
     ]),
-    new QuestionModel(5, "Qual é a doença que está clareando a pele de Michael Jackson?", [
+    new QuestionModel(5, "Qual é a doença que clareou a pele de Michael Jackson?", [
         AnswerModel.incorrect("Astigmatismo"),
         AnswerModel.incorrect("Disidrose"),
         AnswerModel.incorrect("Bruxismo"),
@@ -59,7 +59,7 @@ const questionsDatabase: QuestionModel[] = [
     new QuestionModel(10, "Que profissional conduz o elevador?", [
         AnswerModel.incorrect("Condutor"),
         AnswerModel.incorrect("Elevadorista"),
-        AnswerModel.incorrect("Ascensorista"),
+        AnswerModel.incorrect("Botonista"),
         AnswerModel.correct("Ascensorista")
     ]),
     new QuestionModel(11, "Como é chamado o homem sedutor o conquistador irresistível?", [
