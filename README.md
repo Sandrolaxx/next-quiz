@@ -1,8 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 📝 Sobre o projeto
 
-## Getting Started
+Trata-se de uma aplicação de quiz com tema nas perguntas mais bizarras já realizadas no Show do Milhão🌽. Criado durante o ótimo curso de Next.js disponível na Udemy, foi desenvolvido com fim de se aprofundar mais em temas apresentados no curso, dei uns toques e deixei o projeto com a minha cara, responsivo e várias partes do código mais limpas.
 
-First, run the development server:
+---
+
+## 🤓 Tecnologias utilizadas
+
+* 🔤 Lang - [TypeScript](https://www.typescriptlang.org/)
+* ⚛️ Framework React - [Next.js](https://nextjs.org/)
+* 🦄 Estilização - [CSS Modules](https://github.com/css-modules/css-modules)
+
+---
+
+## 🖼🖌Telas do projeto
+
+* Tela Inicial da aplicação.
+
+![Tela Inicial](https://user-images.githubusercontent.com/61207420/179486176-b25674e4-2bf7-4743-9049-44058b4048f2.png)
+
+* Utilizando a Aplicação.
+
+![UtilizandoAplicacao](https://user-images.githubusercontent.com/61207420/179486360-c23e36f1-37ce-47b4-a147-25f8db5edc56.gif)
+
+* Resultado.
+
+![Resultado](https://user-images.githubusercontent.com/61207420/179486460-73612fd1-3445-417c-bb7d-8db133ac4d79.gif)
+
+---
+
+## 🧑‍💻 Como iniciar a aplicação
+
+Após realizar o clone do projeto vamos baixar todas as suas dependências:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+Agora vamos executar o servidor de desenvolvimento:
 
 ```bash
 npm run dev
@@ -10,25 +46,10 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 📃 Licença
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Este projeto está sobre a licença [Apache 2.0](LICENSE).
