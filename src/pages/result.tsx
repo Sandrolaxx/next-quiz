@@ -30,7 +30,7 @@ export default function Result() {
                     👉 Link da materia sobre
                 </Link>
             </span>
-            <Button href="/" text="Tentar Novemente" />
+            <Button href="/" text="Tentar Novamente" />
         </div>
     )
 }
